@@ -1,0 +1,45 @@
+{
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es2020",
+    "lib": ["es2020"],
+    "module": "commonjs",
+    "strict": true,
+    "strictNullChecks": false,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "lib",
+    "allowSyntheticDefaultImports": true,
+    "useUnknownInCatchVariables": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "cli.ts"
+  ],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".husky/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*",
+    "test/**/*"
+  ],
+  "types": [
+    "node"
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

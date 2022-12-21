@@ -1,0 +1,53 @@
+service: serverless-template
+# app and org for use with dashboard.serverless.com
+# app: nft-backend-serverless
+# org: fabriciocbqa
+
+custom:
+  environment: ${file(env.yml):${self:provider.stage}, file(env.yml):dev}
+
+  serverless-offline:
+    useChildProcesses: true
+
+  # Webpack Configuration
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        - aws-sdk
+
+  splitStacks:
+    nestedStackCount: 2
+    perFunction: false
+    perType: false
+    perGroupFunction: true
+  ## Custom Domain Name Manager (uncomment if you have your own domain in Route53)
+  # customDomain:
+  #   domainName: 'yourcustom-domain.com'
+  #   basePath: ''
+  #   createRoute53Record: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x # Your NodeJS version for lambda runtime
+  memorySize: 512
+  timeout: 29
+  stage: my-stage
+  region: us-west-2 # This is your deployment region
+
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    THIS_IS_AN_ENV_VARIABLE: ${self:custom.environment.THIS_IS_AN_ENV_VARIABLE}
+
+  # iam:
+  #   role:
+  #     statements: ${file(serverless-files/serverless-lambda-policy-definitions.yml)}
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-split-stacks
+  - serverless-webpack
+  # Uncomment domain manager if you're using your custom domain
+  # - serverless-domain-manager 
+
+functions: ${file(serverless-files/serverless-functions-definitions.yml)}

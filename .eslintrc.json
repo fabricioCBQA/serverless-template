@@ -1,0 +1,85 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "root": true,
+  "globals": {},
+  "rules": {
+    "quotes": [2, "single"],
+    "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }],
+    "prefer-const": ["warn", {
+      "destructuring": "any"
+    }],
+    "no-console": "warn",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ],
+    "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
+    "import/prefer-default-export": "off",
+    "no-useless-escape":["off"],
+    "max-len": ["error", {
+      "code":  150,
+      "ignoreComments":  true,
+      "ignoreTrailingComments":  true,
+      "ignoreUrls": true,
+      "ignoreStrings": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreTemplateLiterals": true
+    }],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "env": {},
+  "overrides": [],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@data", "./src/data"],
+          ["@entities", "./src/entities"],
+          ["@helpers", "./src/helpers"],
+          ["@interfaces", "./src/interfaces"],
+          ["@libs", "./src/libs"],
+          ["@utils", "./src/utils"]
+        ],
+        "extensions": [
+          ".ts",
+          ".js"
+        ]
+      }
+    }
+  }
+}

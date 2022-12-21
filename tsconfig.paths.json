@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@controller/*": ["src/controllers"],
+      "@entities/*": ["src/entities/*"],
+      "@utils/*": ["src/utils/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@libs/*": ["src/libs/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@data/*": ["src/data/*"]
+    }
+  }
+}
