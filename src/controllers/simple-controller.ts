@@ -31,14 +31,12 @@ const getHelloThere = async (
   event: APIGatewayEvent
 ): Promise<InternalResponse> => {
   const output = new InternalResponse();
-  const { email, password }: User = JSON.parse(event.body);
 
   try {
+    console.log('asdasdad');
     const greetings = process.env.THIS_IS_AN_ENV_VARIABLE;
 
-    const finalMessage = `${greetings} ${email} this is your password ${password}`;
-
-    output.payload = finalMessage;
+    output.payload = `${greetings} kind men`;
 
     return output;
   } catch (error) {

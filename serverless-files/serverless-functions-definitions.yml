@@ -1,9 +1,8 @@
-  # Controllers Here
-  getHelloThere:
-    handler: src/controllers/simple-controller.handlerGetHelloThere
-    events:
-      - http:
-          method: get
-          path: nfts/get
-          cors: true
-
+# Controllers Here
+getHelloThere:
+  handler: src/controllers/simple-controller.handlerGetHelloThere
+  events:
+    - http:
+        method: get
+        path: some/get
+        cors: true
